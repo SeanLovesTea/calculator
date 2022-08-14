@@ -13,7 +13,7 @@ numBtn.forEach(numBtn => {
     numBtn.addEventListener("click", (e) => {
         const displayValue = e.target.textContent;
         output.innerHTML += displayValue;
-        currentNumber += displayValue;
+        currentNumber = displayValue;
     });
 });
 
@@ -31,29 +31,32 @@ operatorBtn.forEach(operatorBtn => {
 
 function calculate(){
     console.log("pre " +previousNumber + "cur " +currentNumber)
+    let answer; 
     previousNumber = Number(previousNumber)
     currentNumber = Number(currentNumber)
     if(operator === "+"){
         console.log(previousNumber + currentNumber)
-        return previousNumber + currentNumber
+        answer = previousNumber + currentNumber
     }
     if(operator === "-"){
         console.log(previousNumber - currentNumber)
-        return previousNumber - currentNumber
+        answer = previousNumber - currentNumber
         
     }
     if(operator === "*"){
         console.log(previousNumber * currentNumber)
-        return previousNumber * currentNumber
+        answer = previousNumber * currentNumber
     }
     if(operator === "/"){
         console.log(previousNumber / currentNumber)
-        return previousNumber / currentNumber
+        answer = previousNumber / currentNumber
     }
+    clearDisplay();
+    output.innerHTML =  answer;
+    return answer;
 }
 
 let clearDisplay = function(){
-    console.log("clear function")
     output.innerHTML = "";
 }
 /* take input 1 
