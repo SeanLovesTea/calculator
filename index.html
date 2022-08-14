@@ -8,7 +8,42 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="container">
+        <div class="calc">
+            
+            <div class="screen">
+                <div class="output"></div> 
+            </div>
+            <div class="btns-container">
+                <div class="btn-row">
+                    <div class="btn" id="number">7</div>
+                    <div class="btn" id="number">8</div>
+                    <div class="btn" id="number">9</div>
+                    <div class="btn" id="operator">/</div>
+                </div>
+                <div class="btn-row">
+                    <div class="btn" id="number">4</div>
+                    <div class="btn" id="number">5</div>
+                    <div class="btn" id="number">6</div>
+                    <div class="btn" id="operator">*</div>
+                </div>
+                <div class="btn-row">
+                    <div class="btn" id="number">1</div>
+                    <div class="btn" id="number">2</div>
+                    <div class="btn" id="number">3</div>
+                    <div class="btn" id="operator">-</div>
+                </div>
+                <div class="btn-row">
+                    <div class="btn">.</div>
+                    <div class="btn" id="number">0</div>
+                    <div class="btn" onclick="clearDisplay()">AC</div>
+                    <div class="btn" id="operator">+</div>
+                </div>
+                <div class="btn-row">
+                    <div class="btn" id="calc" onclick="calculate()" >=</div>
+                </div>
+        </div>
+    </div>
 </body>
 <script src="main.js"></script>
 </html>
