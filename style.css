@@ -17,6 +17,16 @@ body{
     margin: 12px;
     height: 100px;
     background-color: aliceblue;
+    align-items: flex-end;
+    flex-direction: column;
+}
+.output{
+   font-size: 48px;
+   padding: 8px;
+}
+.output-previous{
+    font-size: 24px;
+    padding:8px;
 }
 .btns-container{
     display:flex;
