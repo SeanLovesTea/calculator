@@ -102,7 +102,7 @@ function calculate(){
         answer = previousNumber / currentNumber;
     }
     clearDisplay();
-    displayAnswe(answer);
+    displayAnswer(answer);
 
     // resets currentNumber and previousNum variables
     currentNumber = "";
@@ -111,7 +111,7 @@ function calculate(){
     return answer;
 }
 // clears the output and displays answer
-function displayAnswe(answer){
+function displayAnswer(answer){
     outAns.innerHTML = answer;
     output.innerHTML = "";
     prevOut.innerHTML = "";
