@@ -1,15 +1,17 @@
 const output = document.querySelector('.output');
+const outAns = document.querySelector('.output-ans');
 const prevOut = document.querySelector('.output-previous');
 const numBtn = document.querySelectorAll('#number');
 const operatorBtn = document.querySelectorAll('#operator');
 const clearBtn = document.querySelector('.clear-btn');
-// const number = document.querySelector('number');
-// // const operator =document.querySelector('operator');
 
 let currentNumber;
 let previousNumber;
 let operator;
 
+// Add event listeners to each Number button
+// display the number on screen
+// store the value in current Number
 numBtn.forEach(numBtn => {
     numBtn.addEventListener("click", (e) => {
         console.log("elength : " +e.target.textContent.length)
@@ -22,63 +24,101 @@ numBtn.forEach(numBtn => {
     });
 });
 
+// Add event listener to all operator buttons
+// Make the number before operater into previousNumber variable
+// And if there is already an operator on the display, calculate the current equation
+// Add the Answer to currentNumber to continue equation
+// Update display
+
 operatorBtn.forEach(operatorBtn => {
     operatorBtn.addEventListener("click", (e) => {
+        if(output.textContent.includes("+")){
+            operator = "+"
+            console.log("it do have dem")
+            calculate();
+            currentNumber = outAns.textContent;
+            prevOut.innerHTML = currentNumber;
+            outAns.textContent = "";
+        }
+        if(output.textContent.includes("-")){
+            operator = "-"
+            console.log("it do have dem")
+            calculate();
+            currentNumber = outAns.textContent;
+            prevOut.innerHTML = currentNumber;
+            outAns.textContent = "";
+        }
+        if(output.textContent.includes("/")){
+            operator = "/"
+            console.log("it do have dem")
+            calculate();
+            currentNumber = outAns.textContent;
+            prevOut.innerHTML = currentNumber;
+            outAns.textContent = "";
+        }
+        if(output.textContent.includes("*")){
+            operator = "*"
+            console.log("it do have dem")
+            calculate();
+            currentNumber = outAns.textContent;
+            prevOut.innerHTML = currentNumber;
+            outAns.textContent = "";
+        }
+        
         const displayValue = e.target.textContent;
         operator = e.target.textContent
         previousNumber = currentNumber;
-        prevOut.innerHTML += displayValue;
-        prevOut.innerHTML += output.innerHTML;
-        output.innerHTML = "";
+        output.innerHTML += displayValue;
     });
 });
-
+// Current Number comes in as full equation
+// Takes in only number after the operator
+function handleCurrentNum(){
+    currentNumber = currentNumber.split(`${operator}`);
+    currentNumber = currentNumber[1];
+    return currentNumber;
+}
+// take in the operator, currentNumber and previousNumber
+// runs operation, returns answer , updates display
 function calculate(){
-    console.log("pre " +previousNumber + "cur " +currentNumber)
-
+    handleCurrentNum();
     let answer; 
     previousNumber = Number(previousNumber)
     currentNumber = Number(currentNumber)
    
     if(operator === ""){
-        console.log(currentNumber)
         answer = currentNumber
     }
     if(operator === "+"){
-        console.log(previousNumber + currentNumber)
-        answer = previousNumber + currentNumber
+        answer = previousNumber + currentNumber;
     }
     if(operator === "-"){
-        console.log(previousNumber - currentNumber)
-        answer = previousNumber - currentNumber
+        answer = previousNumber - currentNumber;
     }
     if(operator === "*"){
-        console.log(previousNumber * currentNumber)
-        answer = previousNumber * currentNumber
+        answer = previousNumber * currentNumber;
     }
     if(operator === "/"){
-        console.log(previousNumber / currentNumber)
-        answer = previousNumber / currentNumber
+        answer = previousNumber / currentNumber;
     }
     clearDisplay();
-    output.innerHTML = ""
-    prevOut.innerHTML = answer;
+    displayAnswe(answer);
 
-    currentNumber = ""
-    previousNumber =""
+    // resets currentNumber and previousNum variables
+    currentNumber = "";
+    previousNumber = "";
+
     return answer;
 }
-
-let clearDisplay = function(){
+// clears the output and displays answer
+function displayAnswe(answer){
+    outAns.innerHTML = answer;
     output.innerHTML = "";
     prevOut.innerHTML = "";
 }
-/* take input 1 
-    store it
-    take operator 
-    store it
-    take input 2
-    store it
-    then run function 
-    if operator = "" then 
-    a formula with the inputs*/
+// clears display
+let clearDisplay = function(){
+    outAns.innerHTML = "";
+    output.innerHTML = "";
+    prevOut.innerHTML = "";
+}
